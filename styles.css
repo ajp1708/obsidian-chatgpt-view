@@ -1,8 +1,13 @@
 /*
-
-This CSS file will be included with your plugin, and
-available in the app when your plugin is enabled.
-
-If your plugin does not need CSS, delete this file.
-
+Makes sure the frame fills the entire window
 */
+#chat-frame {
+	border: none;
+	width: 100%;
+	height: 100%;
+	padding: 0;
+}
+
+#chat-view {
+	padding: 0;
+}
