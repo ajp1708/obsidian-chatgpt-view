@@ -3,10 +3,10 @@ import {
 	Editor,
 	MarkdownView,
 	Modal,
-	Notice,
+	//	Notice,
 	Plugin,
-	PluginSettingTab,
-	Setting,
+	//	PluginSettingTab,
+	//	Setting,
 } from "obsidian";
 import { ChatView, CHAT_VIEW_TYPE } from "./chat-view";
 
@@ -52,7 +52,7 @@ export default class ChatGPTViewPlugins extends Plugin {
 	}
 
 	deactivateView(): void {
-		this.app.workspace.detachLeavesOfType(CHAT_VIEW_TYPE)
+		this.app.workspace.detachLeavesOfType(CHAT_VIEW_TYPE);
 		this.viewShown = false;
 	}
 
@@ -65,18 +65,14 @@ export default class ChatGPTViewPlugins extends Plugin {
 		this.registerView(CHAT_VIEW_TYPE, (leaf) => new ChatView(leaf));
 
 		// This creates an icon in the left ribbon.
-		const ribbonIconEl = this.addRibbonIcon(
-			"dice",
-			"ChatGPT View",
-			(evt: MouseEvent) => {
-				// Called when the user clicks the icon.
-				if(!this.viewShown) {
-					this.activateView();
-				} else {
-					this.deactivateView();
-				}
+		this.addRibbonIcon("dice", "ChatGPT View", (evt: MouseEvent) => {
+			// Called when the user clicks the icon.
+			if (!this.viewShown) {
+				this.activateView();
+			} else {
+				this.deactivateView();
 			}
-		);
+		});
 		// // Perform additional things with the ribbon
 		// ribbonIconEl.addClass('my-plugin-ribbon-class');
 

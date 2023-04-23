@@ -1,0 +1,17 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+# Get the staged files
+staged_files=$(git diff --cached --name-only --diff-filter=ACM) 
+
+for file in $staged_files; do
+    # Check if this file is a Typescript file
+    if [ "${file##*.}" = "ts" ]; then
+        # Run eslint and prettier on the staged TypeScript file
+        npx eslint --ext .ts $files
+        npx prettier --write "$file"
+    fi
+done
+
+# Add the formatted files to the staging area
+git add --update $staged_files

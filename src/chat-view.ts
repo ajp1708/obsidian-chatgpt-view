@@ -34,9 +34,9 @@ export class ChatView extends ItemView {
 		this.webView = document.createElement("webview");
 		this.webView.src = "https://chat.openai.com";
 		this.webView.id = "chat-frame";
-        this.webView.setAttribute("partition", "Chat");
-        // Allows the webview to persist cookies and other data separately from other webviews in the app.
-        ipcRenderer.send("session", "Chat");
+		this.webView.setAttribute("partition", "Chat");
+		// Allows the webview to persist cookies and other data separately from other webviews in the app.
+		ipcRenderer.send("session", "Chat");
 		view.appendChild(this.webView);
 	};
 
