@@ -19,11 +19,13 @@ export class ChatView extends ItemView {
 	}
 
 	getIcon(): string {
-		return "dice";
+		return "ChatGPTObsidian";
 	}
 
 	onOpen = async (): Promise<void> => {
 		console.log("Opening ChatGPT view.");
+
+		const gptUrl = "https://chat.openai.com";
 
 		// Grab a reference to the container
 		const view = this.containerEl.children[1];
@@ -32,11 +34,15 @@ export class ChatView extends ItemView {
 
 		// Create a webview with correct source
 		this.webView = document.createElement("webview");
-		this.webView.src = "https://chat.openai.com";
 		this.webView.id = "chat-frame";
+		this.webView.src = gptUrl;
 		this.webView.setAttribute("partition", "Chat");
+		// Prevent navigation and disable creation of new windows.
+		this.webView.webpreferences += "contextIsolation";
+
 		// Allows the webview to persist cookies and other data separately from other webviews in the app.
 		ipcRenderer.send("session", "Chat");
+
 		view.appendChild(this.webView);
 	};
 

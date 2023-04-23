@@ -10,4 +10,6 @@ Makes sure the frame fills the entire window
 
 #chat-view {
 	padding: 0;
+	/*Default background color of the site when it loads*/
+	background-color: white;
 }
