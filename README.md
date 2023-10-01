@@ -4,4 +4,4 @@ This is an Obsidian plugin that allows you to open up the ChatGPT webpage direct
 
 ## Installing
 
-Grab the latest release from the releases page, and copy all files to .obsidian/plugins/obsidian-wordle/.
+Grab the latest release from the releases page, and copy all files to .obsidian/plugins/obsidian-chatgpt-view/.
